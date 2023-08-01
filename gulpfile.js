@@ -2,56 +2,33 @@ const gulp       = require('gulp');
 const concat     = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify     = require('gulp-uglify');
-const cleanCSS   = require('gulp-clean-css');
-const wrapFile   = require('gulp-wrap-file');
-const rename     = require("gulp-rename");
-
+const babel      = require("gulp-babel");
+const sass       = require('gulp-sass')(require('sass'));
+const rollup     = require('rollup-stream');
+const source     = require('vinyl-source-stream');
+const buffer     = require("vinyl-buffer");
 
 
 var conf = {
     dist: "./dist",
     js: {
         file: 'coreui-alert.min.js',
-        src: [
-            'src/js/coreui.alert.js',
-            'src/js/coreui.alert.mdc-dialog.js',
-        ]
-    },
-    js_dependents: {
-        dist: './src/js',
-        src: [
-            'node_modules/@material/dialog/dist/mdc.dialog.min.js'
-        ],
-        rename: {
-            'mdc.dialog.min' : 'coreui.alert.mdc-dialog'
-        },
-        wrapper: function(content, file) {
-            if (file.path.indexOf('mdc.dialog.min.js') >= 0) {
-                return "(function() {" +
-                    "/*\"use strict\";*/" +
-                    content + ";" +
-                    "CoreUI.alert.mdcDialog = mdc.dialog;" +
-                    "})();"
-            }
-
-            console.warn('!!! not found dependent wrapper for file: ' + file.path)
-            return '';
-        }
+        main: 'src/js/coreui.alert.js',
+        src: 'src/js/*.js'
     },
     css: {
         file: 'coreui-alert.min.css',
         src: [
-            'node_modules/@material/dialog/dist/mdc.dialog.min.css'
+            'src/css/coreui-alert.scss'
         ]
     }
 };
 
 
-
 gulp.task('build_css', function(){
     return gulp.src(conf.css.src)
         .pipe(sourcemaps.init())
-        .pipe(cleanCSS())
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(concat(conf.css.file))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(conf.dist));
@@ -60,6 +37,7 @@ gulp.task('build_css', function(){
 gulp.task('build_css_fast', function(){
     return gulp.src(conf.css.src)
         .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
         .pipe(concat(conf.css.file))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(conf.dist));
@@ -67,36 +45,39 @@ gulp.task('build_css_fast', function(){
 
 
 gulp.task('build_js', function() {
-    return gulp.src(conf.js.src)
+    return rollup({
+        input: conf.js.main,
+        sourcemap: false,
+        format: 'umd',
+        name: "CoreUI.alert",
+        context: "window",
+    })
+        .pipe(source(conf.js.file))
+        .pipe(buffer())
         .pipe(sourcemaps.init())
+        .pipe(babel({
+            "plugins": ["@babel/plugin-transform-template-literals"]
+        }))
         .pipe(uglify())
-        .pipe(concat(conf.js.file, {newLine: ";\n"}))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(conf.dist));
 });
 
 gulp.task('build_js_fast', function() {
-    return gulp.src(conf.js.src)
+    return rollup({
+        input: conf.js.main,
+        sourcemap: false,
+        format: 'umd',
+        name: "CoreUI.alert",
+        plugins: [babel()],
+        context: "window"
+    })
+        .pipe(source(conf.js.file))
+        .pipe(buffer())
         .pipe(sourcemaps.init())
-        .pipe(concat(conf.js.file, {newLine: ";\n"}))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(conf.dist));
 });
-
-gulp.task('build_dependents', function() {
-
-    return gulp.src(conf.js_dependents.src)
-        .pipe(wrapFile({
-            wrapper: conf.js_dependents.wrapper
-        }))
-        .pipe(rename(function (path) {
-            if (conf.js_dependents.rename.hasOwnProperty(path.basename)) {
-                path.basename = conf.js_dependents.rename[path.basename];
-            }
-        }))
-        .pipe(gulp.dest(conf.js_dependents.dist));
-});
-
 
 gulp.task('build_watch', function() {
     gulp.watch(conf.css.src, gulp.series(['build_css_fast']));

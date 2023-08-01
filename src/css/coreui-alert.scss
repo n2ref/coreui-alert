@@ -1,0 +1,244 @@
+
+$swal2-button-padding: 0.25em 1em;
+$swal2-button-font-weight: 400;
+$swal2-outline-color: rgba(171, 171, 171, 0.5) !default;
+
+$swal2-cancel-button-background-color: #fff;
+$swal2-cancel-button-color: #6c757d;
+$swal2-cancel-button-font-size: 14px;
+$swal2-cancel-button-border: 1px solid rgba(0, 0, 0, 0.5);
+
+$swal2-deny-button-background-color: #6c757d;
+$swal2-deny-button-color: #fff;
+$swal2-deny-button-font-size: 14px;
+$swal2-deny-button-border: 0;
+
+$swal2-confirm-button-background-color: #198754;
+$swal2-confirm-button-color: #fff;
+$swal2-confirm-button-font-size: 14px;
+$swal2-confirm-button-border: 0;
+
+$swal2-close-button-focus-box-shadow: none;
+
+$animation-duration: .15s;
+
+@import "node_modules/sweetalert2/src/sweetalert2.scss";
+
+
+
+.swal2-container .swal2-popup {
+    display: flex !important;
+    justify-items: start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+}
+.swal2-container.swal2-center > .swal2-popup {
+    align-self: start;
+}
+.swal2-container .swal2-popup.swal2-icon-success   { border-top: 5px solid #a5dc86; }
+.swal2-container .swal2-popup.swal2-icon-info      { border-top: 5px solid #81d4fa; }
+.swal2-container .swal2-popup.swal2-icon-question  { border-top: 5px solid #b0bec5; }
+.swal2-container .swal2-popup.swal2-icon-error     { border-top: 5px solid #e57373; }
+.swal2-container .swal2-popup.swal2-icon-warning   { border-top: 5px solid #ffa726; }
+.swal2-container .swal2-icon {
+    display: flex;
+    width: 4em;
+    height: 4em;
+    margin: 2em 0.25em 1.25em 2.25em;
+    border-width: 2px
+}
+.swal2-container .swal2-popup.swal2-icon-success .swal2-icon {
+    border-width: 4px
+}
+.swal2-container .swal2-close {
+    position: absolute;
+    right: 0;
+}
+.swal2-container .swal2-icon .swal2-icon-content {
+    font-size: 3em;
+}
+.swal2-container .swal2-html-container {
+    text-align: left;
+    width: 100%;
+}
+.swal2-container .swal2-popup[class*=swal2-icon-] .swal2-html-container {
+    width: calc(100% - 166px);
+}
+.swal2-container .swal2-popup.swal2-icon-success .swal2-html-container {
+    width: calc(100% - 170px);
+}
+.swal2-container .swal2-html-container h3 {
+    font-size: 1.5rem;
+    padding-right: 15px;
+}
+.swal2-container .swal2-icon-success .swal2-html-container h3  { color: #388e3c; }
+.swal2-container .swal2-icon-info .swal2-html-container h3     { color: #0288D1; }
+.swal2-container .swal2-icon-question .swal2-html-container h3 { color: #546e7a; }
+.swal2-container .swal2-icon-error .swal2-html-container h3    { color: #d32f2f; }
+.swal2-container .swal2-icon-warning .swal2-html-container h3  { color: #EF6C00; }
+
+.swal2-container .swal2-actions {
+    align-self: flex-end;
+    width: calc(100% - 2.5em);
+    margin: 1.25em 1.25em 0 1.25em;
+    justify-content: flex-end;
+}
+.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
+    left: 0.55em;
+}
+.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
+    right: 0.55em;
+}
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+    top: 1.9em;
+}
+
+
+.swal2-icon.swal2-success [class^=swal2-success-circular-line] {
+    width: 3.8em;
+    height: 6.55em;
+}
+.swal2-icon.swal2-success .swal2-success-fix {
+    top: -0.1em;
+    left: 1em;
+    width: 0.4em;
+    height: 5.625em;
+}
+.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left] {
+    top: -0.35em;
+    left: -2.65em;
+    transform-origin: 3.8em 3.255em;
+}
+.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right {
+    top: -0.45em;
+    left: 1.5em;
+    transform-origin: 0 3.225em;
+}
+.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]  {
+    top: 2.5em;
+    left: 0.4em;
+    width: 1.5625em;
+}
+.swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {
+    top: 2em;
+    right: 0;
+    width: 2.9375em;
+}
+
+// Success icon animations
+@keyframes swal2-animate-success-line-tip {
+    0% {
+        top: 1.275em;
+        left: 0.0625em;
+        width: 0;
+    }
+    54% {
+        top: 1.0625em;
+        left: 0.125em;
+        width: 0;
+    }
+    70% {
+        top: 2.5em;
+        left: 0.4em;
+        width: 1.5625em;
+    }
+    84% {
+        top: 2.5em;
+        left: 0.4em;
+        width: 1.5625em;
+    }
+    100% {
+        top: 2.5em;
+        left: 0.4em;
+        width: 1.5625em;
+    }
+}
+@keyframes swal2-animate-success-line-long {
+    0% {
+        top: 3em;
+        right: 2.45em;
+        width: 0;
+    }
+    65% {
+        top: 3em;
+        right: 2.45em;
+        width: 0;
+    }
+    100% {
+        top: 2em;
+        right: 0;
+        width: 2.9375em;
+    }
+}
+
+.coreui_animate_animated {
+    -webkit-animation-duration: $animation-duration;
+    animation-duration: $animation-duration;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+@-webkit-keyframes coreui_fadeIn {
+    0% { opacity: 0 }
+    to { opacity: 1 }
+}
+@keyframes coreui_fadeIn {
+    0% { opacity: 0; }
+    to { opacity: 1; }
+}
+.coreui_animate_fadeIn {
+    -webkit-animation-name: coreui_fadeIn;
+    animation-name: coreui_fadeIn;
+}
+@-webkit-keyframes coreui_fadeOut {
+    0% { opacity: 1 }
+    to { opacity: 0 }
+}
+@keyframes coreui_fadeOut {
+    0% { opacity: 1 }
+    to { opacity: 0 }
+}
+.coreui_animate_fadeOut {
+    -webkit-animation-name: coreui_fadeOut;
+    animation-name: coreui_fadeOut
+}
+@-webkit-keyframes coreui_zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.8,.8,.8);
+        transform: scale3d(.8,.8,.8)
+    }
+    50% {
+        opacity: 1
+    }
+}
+@keyframes coreui_zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.8,.8,.8);
+        transform: scale3d(.8,.8,.8)
+    }
+    50% {
+        opacity: 1
+    }
+}
+.coreui_animate_zoomIn {
+    -webkit-animation-name: coreui_zoomIn;
+    animation-name: coreui_zoomIn
+}
+
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .swal2-container > div {
+        flex-direction: column;
+        align-items: center;
+    }
+    .swal2-container .swal2-icon {
+        margin: 2em auto 0.5em;
+    }
+    .swal2-container .swal2-popup[class*=swal2-icon-] .swal2-html-container {
+        width: auto;
+        text-align: center;
+    }
+}
