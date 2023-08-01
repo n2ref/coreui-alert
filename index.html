@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreUI Alert</title>
+    <title>CoreUI Confirm</title>
 
     <link href="dist/page.min.css" rel="stylesheet"/>
     <script src="dist/page.min.js"></script>
@@ -16,210 +16,377 @@
 </head>
 <body data-bs-spy="scroll" data-bs-target="#docs-sidenav">
 
-    <section class="text-left">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 mb-5">
-                    <header>
-                        <nav class="navbar navbar-expand-lg navbar-default">
-                            <div class="container-fluid">
-                                <a class="navbar-brand" href="#">CoreUI</a>
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-panel">Panel</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-form">Form</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-tabs">Tabs</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-layout">Layout</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-table">Table</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-info">Info</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-modal">Modal</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-notice">Notice</a></li>
-                                        <li class="nav-item"><span class="nav-link active">Alert</span></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-confirm">Confirm</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-chart">Chart</a></li>
-                                    </ul>
-
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li class="nav-item"><a class="nav-link" href="https://github.com/shabuninil/coreui-alert">GitHub</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </header>
-                </div>
-                <div class="col-lg-2">
-                    <div id="docs-sidenav" class="hidden-xs hidden-sm hidden-md d-none d-lg-block"
-                         data-bs-spy="affix" data-bs-offset-top="90" data-bs-offset-bottom="70">
-                        <ul class="nav">
-                            <li><a href="#download">Download</a></li>
-                            <li>
-                                <a href="#examples">Examples</a>
-                                <ul class="nav">
-                                    <li><a href="#example-simple">Simple alert</a></li>
-                                    <li><a href="#example-custom-options">Custom options</a></li>
+<section class="text-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <header>
+                    <nav class="navbar navbar-expand-lg navbar-default">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">CoreUI</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-panel">Panel</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-form">Form</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-tabs">Tabs</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-layout">Layout</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-table">Table</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-info">Info</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-modal">Modal</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-notice">Notice</a></li>
+                                    <li class="nav-item"><span class="nav-link active">Alert</span></li>
+                                    <li class="nav-item"><a class="nav-link" href="https://shabuninil.github.io/coreui-chart">Chart</a></li>
                                 </ul>
-                            </li>
-                            <li><a href="#options">Options</a></li>
-                            <li><a href="#methods">Methods</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <h2 id="download">Download</h2>
-                    <div>
-                        <p>
-                            You can download a minimized version of the library or get the full source code at github.com.
-                        </p>
-                        <a class="btn btn-secondary" href="https://github.com/shabuninil/coreui-alert/archive/master.zip">Download source</a>
-                    </div>
 
-
-                    <h2 class="section-margin">Install with npm</h2>
-                    <pre><code class="bash">$ npm install coreui-alert</code></pre>
-
-
-                    <h2 class="section-margin">Требования</h2>
-                    <p>
-                        Для корректной работы на странице необходимо наличие:
-                        <a href="https://getbootstrap.com/docs/5.3" target="_blank">Bootstrap 5</a>,
-                        <a href="https://jquery.com" target="_blank">jquery</a>
-                    </p>
-
-
-                    <h2 id="examples" class="section-margin">Examples</h2>
-                    <div>
-                        <h3 id="example-simple">Simple alert</h3>
-                        <div>
-                            <div class="content-example">
-                                <button class="btn btn-sm btn-secondary" id="alert-info">Info</button>
-                                <button class="btn btn-sm btn-warning" id="alert-warning">Warning</button>
-                                <button class="btn btn-sm btn-danger" id="alert-danger">Danger</button>
-                                <button class="btn btn-sm btn-success" id="alert-success">Success</button>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="nav-item"><a class="nav-link" href="https://github.com/shabuninil/coreui-confirm">GitHub</a></li>
+                                </ul>
                             </div>
-                            <div class="content-markup">
+                        </div>
+                    </nav>
+                </header>
+            </div>
+            <div class="col-lg-2">
+                <div id="docs-sidenav" class="hidden-xs hidden-sm hidden-md d-none d-lg-block"
+                     data-bs-spy="affix" data-bs-offset-top="90" data-bs-offset-bottom="70">
+                    <ul class="nav">
+                        <li><a href="#download">Download</a></li>
+                        <li>
+                            <a href="#examples">Examples</a>
+                            <ul class="nav">
+                                <li><a href="#example-alert">Alert</a></li>
+                                <li><a href="#example-confirm">Confirm</a></li>
+                                <li><a href="#example-html">Html content</a></li>
+                                <li><a href="#example-custom-options">Custom options</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#options">Options</a></li>
+                        <li><a href="#methods">Methods</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <h2 id="download">Download</h2>
+                <div>
+                    <p>
+                        You can download a minimized version of the library or get the full source code at github.com.
+                    </p>
+                    <a class="btn btn-secondary" href="https://github.com/shabuninil/coreui-alert/archive/master.zip">Download source</a>
+                </div>
+
+
+                <h2 class="section-margin">Install with npm</h2>
+                <pre><code class="bash">$ npm install coreui-alert</code></pre>
+
+
+                <h2 id="examples" class="section-margin">Examples</h2>
+                <div>
+                    <h3 id="example-alert">Alert</h3>
+                    <div class="mb-5">
+                        <div class="content-example">
+                            <button class="btn btn-sm btn-secondary" id="alert-default">Default</button>
+                            <button class="btn btn-sm btn-warning" id="alert-warning">Warning</button>
+                            <button class="btn btn-sm btn-danger" id="alert-danger">Danger</button>
+                            <button class="btn btn-sm btn-success" id="alert-success">Success</button>
+                            <button class="btn btn-sm btn-info" id="alert-info">Info</button>
+                        </div>
+                        <div class="content-markup">
                                 <pre><code class="html">
+    &lt;button id="alert-default" class="btn btn-secondary"&gt;Default&lt;/button&gt;
+    &lt;button id="alert-warning" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+    &lt;button id="alert-danger" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+    &lt;button id="alert-success" class="btn btn-success"&gt;Success&lt;/button&gt;
+    &lt;button id="alert-info" class="btn btn-info"&gt;Info&lt;/button&gt;
+
     &lt;script&gt;
-        $('#alert-info').click(function () {
-            CoreUI.alert.info("Alert title", "Raw denim you probably haven't heard of them jean shorts Austin");
+        $('#alert-default').click(function () {
+            CoreUI.alert.default("Alert title", "Raw denim you probably haven't heard of them jean shorts Austin?");
         });
 
         $('#alert-warning').click(function () {
-            CoreUI.alert.warning("Warning title", "Raw denim you probably haven't heard of them jean shorts Austin");
+            CoreUI.alert.warning("Alert title", "Raw denim you probably haven't heard of them jean shorts Austin?");
         });
 
         $('#alert-danger').click(function () {
-            CoreUI.alert.danger("Oops...", "Something went wrong!");
+            CoreUI.alert.danger('Alert title', "Raw denim you probably haven't heard of them jean shorts Austin?");
         });
 
         $('#alert-success').click(function () {
-            CoreUI.alert.success("Success work", "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.");
+            CoreUI.alert.success('Alert title', "Raw denim you probably haven't heard of them jean shorts Austin?");
+        });
+
+        $('#alert-info').click(function () {
+            CoreUI.alert.info("Alert title", "Raw denim you probably haven't heard of them jean shorts Austin?");
         });
     &lt;/script&gt;
                                 </code></pre>
-                            </div>
                         </div>
-                        <br><br>
+                    </div>
 
 
-                        <h3 id="example-custom-options">Custom options</h3>
-                        <div>
-                            <div class="content-example">
-                                <button class="btn btn-sm btn-primary" id="alert-custom">Custom</button>
-                            </div>
-                            <div class="content-markup">
+                    <h3 id="example-confirm">Confirm</h3>
+                    <div class="mb-5">
+                        <div class="content-example">
+                            <button class="btn btn-sm btn-secondary" id="confirm-default">Default</button>
+                            <button class="btn btn-sm btn-warning" id="confirm-warning">Warning</button>
+                            <button class="btn btn-sm btn-danger" id="confirm-danger">Danger</button>
+                            <button class="btn btn-sm btn-primary" id="confirm-question">Question</button>
+                        </div>
+                        <div class="content-markup">
                                 <pre><code class="html">
+    &lt;button id="confirm-default" class="btn btn-secondary"&gt;Default&lt;/button&gt;
+    &lt;button id="confirm-warning" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+    &lt;button id="confirm-danger" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+    &lt;button id="confirm-question" class="btn btn-primary"&gt;Question&lt;/button&gt;
+
+    &lt;script&gt;
+        $('#confirm-default').click(function () {
+            CoreUI.alert.default(
+                "Confirm title",
+                "Raw denim you probably haven't heard of them jean shorts Austin?",
+                {
+                    btnAcceptText: "Ok",
+                    btnAcceptEvent: function () { console.log('Ok') },
+                    btnRejectText: "Cancel",
+                    btnRejectEvent: function () { console.log('Cancel') }
+                }
+            );
+        });
+
+        $('#confirm-warning').click(function () {
+            CoreUI.alert.warning(
+                "Confirm title",
+                "Raw denim you probably haven't heard of them jean shorts Austin?",
+                {
+                    btnAcceptText: "Sign",
+                    btnAcceptColor: "#ff9800",
+                    btnAcceptEvent: function () { console.log('Sign') },
+                    btnRejectText: "Cancel",
+                    btnRejectEvent: function () { console.log('Cancel') }
+                }
+            );
+        });
+
+        $('#confirm-danger').click(function () {
+            CoreUI.alert.danger(
+                'Confirm title',
+                "Raw denim you probably haven't heard of them jean shorts Austin?",
+                {
+                    btnAcceptText: "Delete",
+                    btnAcceptColor: "#F44336",
+                    btnAcceptEvent: function () { console.log('Delete') },
+                    btnRejectText: "Cancel",
+                    btnRejectEvent: function () { console.log('Cancel') }
+                }
+            );
+        });
+
+        $('#confirm-question').click(function () {
+            CoreUI.alert.question(
+                "Confirm title",
+                "Raw denim you probably haven't heard of them jean shorts Austin?",
+                {
+                    btnAcceptText: "Yes",
+                    btnAcceptColor: "#6c757d",
+                    btnAcceptEvent: function () { console.log('Yes') },
+                    btnRejectText: "No",
+                    btnRejectEvent: function () { console.log('No') }
+                }
+            );
+        });
+    &lt;/script&gt;
+                                </code></pre>
+                        </div>
+                    </div>
+
+
+                    <h3 id="example-html">Html content</h3>
+                    <div class="mb-5">
+                        <div class="content-example">
+                            <button id="alert-html" class="btn btn-sm btn-secondary">Show</button>
+                        </div>
+                        <div class="content-markup">
+                                <pre><code class="html">
+    &lt;button id="alert-html" class="btn btn-secondary"&gt;Show&lt;/button&gt;
+
+    &lt;script&gt;
+        $('#alert-html').click(function () {
+            CoreUI.alert.default(
+                '&lt;strong&gt;HTML &lt;u&gt;example&lt;/u&gt;&lt;/strong&gt;',
+                '&lt;p&gt;You can use &lt;b&gt;bold text&lt;/b&gt;, &lt;a href="#"&gt;links&lt;/a&gt; and other HTML tags&lt;/p&gt;' +
+                '&lt;table class="table mt-4"&gt;' +
+                    '&lt;tbody&gt;' +
+                        '&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;Mark&lt;/td&gt;&lt;td&gt;Otto&lt;/td&gt;&lt;td&gt;@mdo&lt;/td&gt;&lt;/tr&gt;' +
+                        '&lt;tr&gt;&lt;th&gt;2&lt;/th&gt;&lt;td&gt;Jacob&lt;/td&gt;&lt;td&gt;Thornton&lt;/td&gt;&lt;td&gt;@fat&lt;/td&gt;&lt;/tr&gt;' +
+                    '&lt;/tbody&gt;' +
+                '&lt;/table&gt;',
+                {
+                    btnCancelText: 'Ok',
+                    btnCancelEvent: function () { console.log('Ok') },
+                }
+            );
+        });
+    &lt;/script&gt;
+                                </code></pre>
+                        </div>
+                    </div>
+
+
+                    <h3 id="example-custom-options">Custom options</h3>
+                    <div class="mb-5">
+                        <div class="content-example">
+                            <button class="btn btn-sm btn-primary" id="alert-custom">Show</button>
+                        </div>
+                        <div class="content-markup">
+                                <pre><code class="html">
+    &lt;button id="alert-custom" class="btn btn-primary"&gt;Show&lt;/button&gt;
+
     &lt;script&gt;
         $('#alert-custom').click(function () {
-            CoreUI.alert.info("Alert title", "Raw denim you probably haven't heard of them jean shorts Austin", {
-                titleColor: '#e91e63',
-                messageColor: '#9c27b0',
-                textButton: 'Ok',
-                onClose: function () {
-                    console.log('close')
-                },
-                onClosed: function () {
-                    console.log('closed')
-                }
+            CoreUI.alert.create({
+                type: 'info',
+                title: "Custom alert",
+                content: "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu...",
+                btnAcceptText: "Accept",
+                btnAcceptColor: "#6c757d",
+                btnAcceptEvent: function () { console.log('Accept') },
+                btnRejectText: "Reject",
+                btnRejectColor: "#6c757d",
+                btnRejectEvent: function () { console.log('Reject') },
+                btnCancelText: "Cancel",
+                btnCancelColor: "#fff",
+                btnCancelEvent: function () { console.log('Cancel') }
             });
         });
     &lt;/script&gt;
                                 </code></pre>
-                            </div>
                         </div>
-                        <br><br>
-
                     </div>
+                </div>
 
 
-                    <h2 id="options" class="section-margin">Options</h2>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped js-options-table">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>type</th>
-                                <th>default</th>
-                                <th>description</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th>titleColor</th> <td>string</td> <td></td>
-                                <td>Цвет заголовка</td>
-                            </tr>
-                            <tr>
-                                <th>messageColor</th> <td>string</td> <td></td>
-                                <td>Цвет основного сообщения</td>
-                            </tr>
-                            <tr>
-                                <th>textButton</th> <td>string</td> <td></td>
-                                <td>Тест для кнопки закрытия</td>
-                            </tr>
-                            <tr>
-                                <th>onClose</th> <td>function</td> <td></td>
-                                <td>Событие при начале закрытия сообщения</td>
-                            </tr>
-                            <tr>
-                                <th>onClosed</th> <td>function</td> <td></td>
-                                <td>Событие при завершении закрытия сообщения</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <h2 id="options" class="section-margin">Options</h2>
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered table-striped js-options-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>type</th>
+                            <th>default</th>
+                            <th>description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>type</th> <td>string</td> <td></td>
+                            <td>Тип уведомления. Доступные варианты: <code>warning, danger, success, info, question</code></td>
+                        </tr>
+                        <tr>
+                            <th>title</th> <td>string</td> <td></td>
+                            <td>Заголовок уведомления</td>
+                        </tr>
+                        <tr>
+                            <th>content</th> <td>string</td> <td></td>
+                            <td>Содержимое уведомления</td>
+                        </tr>
+                        <tr>
+                            <th>btnAcceptText</th> <td>string</td> <td></td>
+                            <td>Текст на кнопке подтверждения</td>
+                        </tr>
+                        <tr>
+                            <th>btnAcceptColor</th> <td>string</td> <td></td>
+                            <td>Цвет фона для кнопки подтверждения</td>
+                        </tr>
+                        <tr>
+                            <th>btnAcceptEvent</th> <td>function|string</td> <td></td>
+                            <td>Событие происходящее при нажатии на кнопку подтверждения</td>
+                        </tr>
+                        <tr>
+                            <th>btnRejectText</th> <td>string</td> <td></td>
+                            <td>Текст на кнопке отклонения</td>
+                        </tr>
+                        <tr>
+                            <th>btnRejectColor</th> <td>string</td> <td></td>
+                            <td>Цвет фона для кнопки отклонения</td>
+                        </tr>
+                        <tr>
+                            <th>btnRejectEvent</th> <td>function|string</td> <td></td>
+                            <td>Событие происходящее при нажатии на кнопку отклонения</td>
+                        </tr>
+                        <tr>
+                            <th>btnCancelText</th> <td>string</td> <td></td>
+                            <td>Текст на кнопке закрытия</td>
+                        </tr>
+                        <tr>
+                            <th>btnCancelColor</th> <td>string</td> <td></td>
+                            <td>Цвет фона для кнопки закрытия</td>
+                        </tr>
+                        <tr>
+                            <th>btnCancelEvent</th> <td>function|string</td> <td></td>
+                            <td>Событие происходящее при нажатии на кнопку закрытия</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
 
-                    <h2 id="methods" class="section-margin">Methods</h2>
-                    <div>
-                        <code>CoreUI.alert.info( title, message, options )</code>
-                        <p>Показ сообщения</p>
-
-                        <code>CoreUI.alert.warning( title, message, options )</code>
-                        <p>Показ сообщения c предупреждением</p>
-
-                        <code>CoreUI.alert.danger( title, message, options )</code>
-                        <p>Показ критического сообщения</p>
-
-                        <code>CoreUI.alert.success( title, message, options )</code>
-                        <p>Показ успешного сообщения</p>
-                    </div>
-                    <br>
-                    <br>
+                <h2 id="methods" class="section-margin">Methods</h2>
+                <div class="table-responsive mb-5">
+                    <table class="table table-bordered table-striped js-options-table">
+                        <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code class="js hljs javascript">CoreUI.alert.default( title, message, options )</code></td>
+                            <td>Показ стандартного уведомления без стилизации</td>
+                        </tr>
+                        <tr>
+                            <td><code class="js hljs javascript">CoreUI.alert.warning( title, message, options )</code></td>
+                            <td>Показ уведомления с предупреждением</td>
+                        </tr>
+                        <tr>
+                            <td><code class="js hljs javascript">CoreUI.alert.danger( title, message, options )</code></td>
+                            <td>Показ уведомления с опасностью</td>
+                        </tr>
+                        <tr>
+                            <td><code class="js hljs javascript">CoreUI.alert.success( title, message, options )</code></td>
+                            <td>Показ уведомления об успешным событии</td>
+                        </tr>
+                        <tr>
+                            <td><code class="js hljs javascript">CoreUI.alert.info( title, message, options )</code></td>
+                            <td>Показ информационного сообщения</td>
+                        </tr>
+                        <tr>
+                            <td><code class="js hljs javascript">CoreUI.alert.question( title, message, options )</code></td>
+                            <td>Показ вопросительного сообщения</td>
+                        </tr>
+                        <tr>
+                            <td><code class="js hljs javascript">CoreUI.alert.create( options )</code></td>
+                            <td>Показ сообщения</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="buffer-content"></div>
-    </section>
+    </div>
+    <div class="buffer-content"></div>
+</section>
 
-    <footer>
-        <section class="copyright">
-            <div class="container">
-                <span class="float-start"></span>
-                <span class="float-end">Code licensed under the GNU License</span>
-            </div>
-        </section>
-    </footer>
+<footer>
+    <section class="copyright">
+        <div class="container">
+            <span class="float-start"></span>
+            <span class="float-end">Code licensed under the GNU License</span>
+        </div>
+    </section>
+</footer>
 </body>
 </html>
