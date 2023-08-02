@@ -45,7 +45,7 @@ $animation-duration: .15s;
     display: flex;
     width: 4em;
     height: 4em;
-    margin: 2em 0.25em 1.25em 2.25em;
+    margin: 1.5em 0.25em 1em 2.25em;
     border-width: 2px
 }
 .swal2-container .swal2-popup.swal2-icon-success .swal2-icon {
@@ -61,6 +61,7 @@ $animation-duration: .15s;
 .swal2-container .swal2-html-container {
     text-align: left;
     width: 100%;
+    margin: 1em 1.6em 0.8em;
 }
 .swal2-container .swal2-popup[class*=swal2-icon-] .swal2-html-container {
     width: calc(100% - 166px);
@@ -81,7 +82,7 @@ $animation-duration: .15s;
 .swal2-container .swal2-actions {
     align-self: flex-end;
     width: calc(100% - 2.5em);
-    margin: 1.25em 1.25em 0 1.25em;
+    margin: 0 1.25em 0 1.25em;
     justify-content: flex-end;
 }
 .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
