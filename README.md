@@ -1,6 +1,6 @@
 # CoreUI Alert
 
-**[DEMO](https://shabuninil.github.io/coreui-alert)**
+**[DEMO](https://n2ref.github.io/coreui-alert)**
 
 ## Install with npm
 `$ npm install coreui-alert`
@@ -33,4 +33,4 @@
 
 Result
 
-![Alert](https://raw.githubusercontent.com/shabuninil/coreui-alert/main/preview.png)
+![Alert](https://raw.githubusercontent.com/n2ref/coreui-alert/main/preview.png)
