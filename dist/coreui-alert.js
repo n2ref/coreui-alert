@@ -1201,6 +1201,10 @@
               new Function(button.click)();
               this.hide();
             };
+          } else {
+            event = function event() {
+              this.hide();
+            };
           }
           alert._buttons.push({
             id: id,

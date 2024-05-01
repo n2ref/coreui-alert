@@ -35,6 +35,10 @@ let coreuiAlertPrivate = {
                         (new Function(button.click))()
                         this.hide();
                     }
+                } else {
+                    event = function () {
+                        this.hide();
+                    }
                 }
 
                 alert._buttons.push({
