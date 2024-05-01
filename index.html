@@ -134,14 +134,12 @@
                             <button class="btn btn-sm btn-secondary" id="confirm-default">Default</button>
                             <button class="btn btn-sm btn-warning" id="confirm-warning">Warning</button>
                             <button class="btn btn-sm btn-danger" id="confirm-danger">Danger</button>
-                            <button class="btn btn-sm btn-primary" id="confirm-question">Question</button>
                         </div>
                         <div class="content-markup">
                                 <pre><code class="html">
     &lt;button id="confirm-default" class="btn btn-secondary"&gt;Default&lt;/button&gt;
     &lt;button id="confirm-warning" class="btn btn-warning"&gt;Warning&lt;/button&gt;
     &lt;button id="confirm-danger" class="btn btn-danger"&gt;Danger&lt;/button&gt;
-    &lt;button id="confirm-question" class="btn btn-primary"&gt;Question&lt;/button&gt;
 
     &lt;script&gt;
         $('#confirm-default').click(function () {
@@ -149,10 +147,10 @@
                 "Confirm title",
                 "Raw denim you probably haven't heard of them jean shorts Austin?",
                 {
-                    btnAcceptText: "Ok",
-                    btnAcceptEvent: function () { console.log('Ok') },
-                    btnRejectText: "Cancel",
-                    btnRejectEvent: function () { console.log('Cancel') }
+                    buttons: [
+                        { text: "Cancel", click: function () { console.log('Cancel') }, },
+                        { text: "Ok",     click: function () { console.log('Ok')     }, }
+                    ]
                 }
             );
         });
@@ -162,11 +160,10 @@
                 "Confirm title",
                 "Raw denim you probably haven't heard of them jean shorts Austin?",
                 {
-                    btnAcceptText: "Sign",
-                    btnAcceptColor: "#ff9800",
-                    btnAcceptEvent: function () { console.log('Sign') },
-                    btnRejectText: "Cancel",
-                    btnRejectEvent: function () { console.log('Cancel') }
+                    buttons: [
+                        { text: "Cancel",                  click: function () { console.log('Cancel') }, },
+                        { text: "Sign",   type: 'warning', click: function () { console.log('Sign')     }, }
+                    ]
                 }
             );
         });
@@ -176,25 +173,10 @@
                 'Confirm title',
                 "Raw denim you probably haven't heard of them jean shorts Austin?",
                 {
-                    btnAcceptText: "Delete",
-                    btnAcceptColor: "#F44336",
-                    btnAcceptEvent: function () { console.log('Delete') },
-                    btnRejectText: "Cancel",
-                    btnRejectEvent: function () { console.log('Cancel') }
-                }
-            );
-        });
-
-        $('#confirm-question').click(function () {
-            CoreUI.alert.question(
-                "Confirm title",
-                "Raw denim you probably haven't heard of them jean shorts Austin?",
-                {
-                    btnAcceptText: "Yes",
-                    btnAcceptColor: "#6c757d",
-                    btnAcceptEvent: function () { console.log('Yes') },
-                    btnRejectText: "No",
-                    btnRejectEvent: function () { console.log('No') }
+                    buttons: [
+                        { text: "Cancel",                 click: function () { console.log('Cancel') }, },
+                        { text: "Delete", type: 'danger', click: function () { console.log('Delete')     }, }
+                    ]
                 }
             );
         });
@@ -215,20 +197,19 @@
 
     &lt;script&gt;
         $('#alert-html').click(function () {
-            CoreUI.alert.default(
-                '&lt;strong&gt;HTML &lt;u&gt;example&lt;/u&gt;&lt;/strong&gt;',
-                '&lt;p&gt;You can use &lt;b&gt;bold text&lt;/b&gt;, &lt;a href="#"&gt;links&lt;/a&gt; and other HTML tags&lt;/p&gt;' +
-                '&lt;table class="table mt-4"&gt;' +
-                    '&lt;tbody&gt;' +
-                        '&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;Mark&lt;/td&gt;&lt;td&gt;Otto&lt;/td&gt;&lt;td&gt;@mdo&lt;/td&gt;&lt;/tr&gt;' +
-                        '&lt;tr&gt;&lt;th&gt;2&lt;/th&gt;&lt;td&gt;Jacob&lt;/td&gt;&lt;td&gt;Thornton&lt;/td&gt;&lt;td&gt;@fat&lt;/td&gt;&lt;/tr&gt;' +
-                    '&lt;/tbody&gt;' +
-                '&lt;/table&gt;',
-                {
-                    btnCancelText: 'Ok',
-                    btnCancelEvent: function () { console.log('Ok') },
-                }
-            );
+            CoreUI.alert.create({
+                html: '&lt;strong&gt;HTML &lt;u&gt;example&lt;/u&gt;&lt;/strong&gt;' +
+                      '&lt;p&gt;You can use &lt;b&gt;bold text&lt;/b&gt;, &lt;a href="#"&gt;links&lt;/a&gt; and other HTML tags&lt;/p&gt;' +
+                      '&lt;table class="table mt-4"&gt;' +
+                          '&lt;tbody&gt;' +
+                              '&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;Mark&lt;/td&gt;&lt;td&gt;Otto&lt;/td&gt;&lt;td&gt;@mdo&lt;/td&gt;&lt;/tr&gt;' +
+                              '&lt;tr&gt;&lt;th&gt;2&lt;/th&gt;&lt;td&gt;Jacob&lt;/td&gt;&lt;td&gt;Thornton&lt;/td&gt;&lt;td&gt;@fat&lt;/td&gt;&lt;/tr&gt;' +
+                          '&lt;/tbody&gt;' +
+                      '&lt;/table&gt;',
+                buttons: [
+                    { text: 'Ok', click: function () { console.log('Ok') }, }
+                ]
+            });
         });
     &lt;/script&gt;
                                 </code></pre>
@@ -250,16 +231,12 @@
             CoreUI.alert.create({
                 type: 'info',
                 title: "Custom alert",
-                content: "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu...",
-                btnAcceptText: "Accept",
-                btnAcceptColor: "#6c757d",
-                btnAcceptEvent: function () { console.log('Accept') },
-                btnRejectText: "Reject",
-                btnRejectColor: "#6c757d",
-                btnRejectEvent: function () { console.log('Reject') },
-                btnCancelText: "Cancel",
-                btnCancelColor: "#fff",
-                btnCancelEvent: function () { console.log('Cancel') }
+                message: "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.",
+                buttons: [
+                    { text: "Cancel", type: 'secondary', click: function () { console.log('Cancel') }, },
+                    { text: "Reject", type: 'warning',   click: function () { console.log('Reject') }, },
+                    { text: "Accept", type: 'success',   click: function () { console.log('Accept') }, },
+                ]
             });
         });
     &lt;/script&gt;
@@ -283,51 +260,35 @@
                         <tbody>
                         <tr>
                             <th>type</th> <td>string</td> <td></td>
-                            <td>Тип уведомления. Доступные варианты: <code>warning, danger, success, info, question</code></td>
+                            <td>Тип уведомления. Доступные варианты: <code>default, warning, danger, success, info</code></td>
                         </tr>
                         <tr>
                             <th>title</th> <td>string</td> <td></td>
                             <td>Заголовок уведомления</td>
                         </tr>
                         <tr>
-                            <th>content</th> <td>string</td> <td></td>
+                            <th>message</th> <td>string</td> <td></td>
                             <td>Содержимое уведомления</td>
                         </tr>
                         <tr>
-                            <th>btnAcceptText</th> <td>string</td> <td></td>
-                            <td>Текст на кнопке подтверждения</td>
+                            <th>html</th> <td>string</td> <td></td>
+                            <td>HTML содержимое уведомления</td>
                         </tr>
                         <tr>
-                            <th>btnAcceptColor</th> <td>string</td> <td></td>
-                            <td>Цвет фона для кнопки подтверждения</td>
+                            <th>showClose</th> <td>boolean</td> <td>true</td>
+                            <td>Отображение кнопки закрытия уведомления</td>
                         </tr>
                         <tr>
-                            <th>btnAcceptEvent</th> <td>function|string</td> <td></td>
-                            <td>Событие происходящее при нажатии на кнопку подтверждения</td>
+                            <th>buttons</th> <td>array</td> <td></td>
+                            <td>Список кнопок на панели уведомления</td>
                         </tr>
                         <tr>
-                            <th>btnRejectText</th> <td>string</td> <td></td>
-                            <td>Текст на кнопке отклонения</td>
+                            <th>onShow</th> <td>function|string</td> <td></td>
+                            <td>Событие происходящее при открытии уведомления</td>
                         </tr>
                         <tr>
-                            <th>btnRejectColor</th> <td>string</td> <td></td>
-                            <td>Цвет фона для кнопки отклонения</td>
-                        </tr>
-                        <tr>
-                            <th>btnRejectEvent</th> <td>function|string</td> <td></td>
-                            <td>Событие происходящее при нажатии на кнопку отклонения</td>
-                        </tr>
-                        <tr>
-                            <th>btnCancelText</th> <td>string</td> <td></td>
-                            <td>Текст на кнопке закрытия</td>
-                        </tr>
-                        <tr>
-                            <th>btnCancelColor</th> <td>string</td> <td></td>
-                            <td>Цвет фона для кнопки закрытия</td>
-                        </tr>
-                        <tr>
-                            <th>btnCancelEvent</th> <td>function|string</td> <td></td>
-                            <td>Событие происходящее при нажатии на кнопку закрытия</td>
+                            <th>onHide</th> <td>function|string</td> <td></td>
+                            <td>Событие происходящее при закрытии уведомления</td>
                         </tr>
                         </tbody>
                     </table>
