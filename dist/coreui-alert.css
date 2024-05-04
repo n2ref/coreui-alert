@@ -32,6 +32,7 @@ body.coreui_alert__show {
   position: relative;
   box-sizing: border-box;
   grid-template-columns: minmax(0, 100%);
+  min-height: 6rem;
   width: 32em;
   max-width: 100%;
   padding: 0.4rem 1.25em 1.25em;
@@ -79,6 +80,7 @@ body.coreui_alert__show {
 }
 .coreui_alert__container .coreui_alert__message {
   margin-bottom: 1rem;
+  margin-top: 0.8rem;
 }
 .coreui_alert__container .coreui_alert__close {
   z-index: 2;
@@ -116,7 +118,8 @@ body.coreui_alert__show {
   align-items: center;
   padding: 0;
   align-self: flex-end;
-  width: calc(100% - 2.5em);
+  width: 100%;
+  margin-top: 1rem;
   justify-content: flex-end;
 }
 .coreui_alert__container .coreui_alert__html {
