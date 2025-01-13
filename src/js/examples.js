@@ -83,6 +83,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+    // Expand
+    $('#alert-expand').click(function () {
+        CoreUI.alert.create({
+            title: "Alert title",
+            message: "Raw denim you probably haven't heard of them jean shorts Austin?",
+            expandText: 'more',
+            html: '<strong>HTML <u>example</u></strong>' +
+                   '<p>You can use <b>bold text</b>, <a href="#">links</a> and other HTML tags</p>' +
+                   '<table class="table mt-4">' +
+                       '<tbody>' +
+                           '<tr><th>1</th><td>Mark</td><td>Otto</td><td>@mdo</td></tr>' +
+                           '<tr><th>2</th><td>Jacob</td><td>Thornton</td><td>@fat</td></tr>' +
+                       '</tbody>' +
+                   '</table>',
+            buttons: [
+                { text: 'Ok', click: function () { console.log('Ok') }, }
+            ]
+        });
+    });
+
+
     // Custom options
     $('#alert-custom').click(function () {
         CoreUI.alert.create({
@@ -95,12 +116,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 { text: "Accept", type: 'success',   click: function () { console.log('Accept') }, },
             ]
         });
-    });
-
-
-
-    // Code highlight
-    $('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
     });
 });

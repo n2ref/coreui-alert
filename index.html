@@ -42,6 +42,22 @@
                                 </ul>
 
                                 <ul class="nav navbar-nav navbar-right">
+                                    <li class="nav-item dropdown" id="page-theme">
+                                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                            <i class="bi bi-sun"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li>
+                                                <button type="button" class="dropdown-item" data-bs-theme-value="light">
+                                                    <i class="bi bi-sun"></i> light
+                                                </button>
+                                            <li>
+                                                <button type="button" class="dropdown-item" data-bs-theme-value="dark">
+                                                    <i class="bi bi-moon-stars"></i> Dark
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </li>
                                     <li class="nav-item"><a class="nav-link" href="https://github.com/n2ref/coreui-alert">GitHub</a></li>
                                 </ul>
                             </div>
@@ -60,6 +76,7 @@
                                 <li><a href="#example-alert">Alert</a></li>
                                 <li><a href="#example-confirm">Confirm</a></li>
                                 <li><a href="#example-html">Html content</a></li>
+                                <li><a href="#example-expand">Expand content</a></li>
                                 <li><a href="#example-custom-options">Custom options</a></li>
                             </ul>
                         </li>
@@ -220,6 +237,40 @@
                     </div>
 
 
+                    <div id="example-expand" class="mb-5">
+                        <h3>Expand content</h3>
+                        <div class="content-example">
+                            <button id="alert-expand" class="btn btn-sm btn-secondary">Alert</button>
+                        </div>
+                        <div class="content-markup">
+                                <pre><code class="html">
+    &lt;button id="alert-expand" class="btn btn-secondary"&gt;Alert&lt;/button&gt;
+
+    &lt;script&gt;
+        $('#alert-expand').click(function () {
+            CoreUI.alert.create({
+                title: "Alert title",
+                message: "Raw denim you probably haven't heard of them jean shorts Austin?",
+                expandText: "more",
+                html: '&lt;strong&gt;HTML &lt;u&gt;example&lt;/u&gt;&lt;/strong&gt;' +
+                      '&lt;p&gt;You can use &lt;b&gt;bold text&lt;/b&gt;, &lt;a href="#"&gt;links&lt;/a&gt; and other HTML tags&lt;/p&gt;' +
+                      '&lt;table class="table mt-4"&gt;' +
+                          '&lt;tbody&gt;' +
+                              '&lt;tr&gt;&lt;th&gt;1&lt;/th&gt;&lt;td&gt;Mark&lt;/td&gt;&lt;td&gt;Otto&lt;/td&gt;&lt;td&gt;@mdo&lt;/td&gt;&lt;/tr&gt;' +
+                              '&lt;tr&gt;&lt;th&gt;2&lt;/th&gt;&lt;td&gt;Jacob&lt;/td&gt;&lt;td&gt;Thornton&lt;/td&gt;&lt;td&gt;@fat&lt;/td&gt;&lt;/tr&gt;' +
+                          '&lt;/tbody&gt;' +
+                      '&lt;/table&gt;',
+                buttons: [
+                    { text: 'Ok', click: function () { console.log('Ok') }, }
+                ]
+            });
+        });
+    &lt;/script&gt;
+                                </code></pre>
+                        </div>
+                    </div>
+
+
                     <div id="example-custom-options" class="mb-5">
                         <h3>Custom options</h3>
                         <div class="content-example">
@@ -278,6 +329,10 @@
                             <td>HTML содержимое уведомления</td>
                         </tr>
                         <tr>
+                            <th>expandText</th> <td>string</td> <td></td>
+                            <td>Добавляет текст, при нажатии на который, html содержимое раскрывается</td>
+                        </tr>
+                        <tr>
                             <th>showClose</th> <td>boolean</td> <td>true</td>
                             <td>Отображение кнопки закрытия уведомления</td>
                         </tr>
@@ -309,31 +364,31 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><code class="js hljs javascript">CoreUI.alert.default( title, message, options )</code></td>
+                            <td><code>CoreUI.alert.default( title, message, options )</code></td>
                             <td>Показ стандартного уведомления без стилизации</td>
                         </tr>
                         <tr>
-                            <td><code class="js hljs javascript">CoreUI.alert.warning( title, message, options )</code></td>
+                            <td><code>CoreUI.alert.warning( title, message, options )</code></td>
                             <td>Показ уведомления с предупреждением</td>
                         </tr>
                         <tr>
-                            <td><code class="js hljs javascript">CoreUI.alert.danger( title, message, options )</code></td>
+                            <td><code>CoreUI.alert.danger( title, message, options )</code></td>
                             <td>Показ уведомления с опасностью</td>
                         </tr>
                         <tr>
-                            <td><code class="js hljs javascript">CoreUI.alert.success( title, message, options )</code></td>
+                            <td><code>CoreUI.alert.success( title, message, options )</code></td>
                             <td>Показ уведомления об успешным событии</td>
                         </tr>
                         <tr>
-                            <td><code class="js hljs javascript">CoreUI.alert.info( title, message, options )</code></td>
+                            <td><code>CoreUI.alert.info( title, message, options )</code></td>
                             <td>Показ информационного сообщения</td>
                         </tr>
                         <tr>
-                            <td><code class="js hljs javascript">CoreUI.alert.question( title, message, options )</code></td>
+                            <td><code>CoreUI.alert.question( title, message, options )</code></td>
                             <td>Показ вопросительного сообщения</td>
                         </tr>
                         <tr>
-                            <td><code class="js hljs javascript">CoreUI.alert.create( options )</code></td>
+                            <td><code>CoreUI.alert.create( options )</code></td>
                             <td>Показ сообщения</td>
                         </tr>
                         </tbody>

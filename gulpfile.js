@@ -14,12 +14,14 @@ var conf = {
             'node_modules/jquery/dist/jquery.min.js',
             'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
             'src/js/highlight.pack.js',
+            'src/js/page.js',
         ]
     },
     css: {
         file: 'page.min.css',
         src: [
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
+            'node_modules/bootstrap-icons/font/bootstrap-icons.min.css',
             'src/css/github-gist.css',
             'src/css/styles.css',
         ]
