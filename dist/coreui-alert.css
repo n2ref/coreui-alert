@@ -1,6 +1,15 @@
+:root {
+  --coreui-alert-bg-color: #fff;
+  --coreui-alert-text-color: #545454;
+}
+
+[data-bs-theme=dark] {
+  --coreui-alert-bg-color: #333;
+  --coreui-alert-text-color: inherit;
+}
+
 body.coreui_alert__show {
-  height: auto !important;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .coreui_alert__container {
@@ -37,9 +46,9 @@ body.coreui_alert__show {
   max-width: 100%;
   padding: 0.4rem 1.25em 1.25em;
   border: none;
-  border-radius: 5px;
-  background: #fff;
-  color: #545454;
+  border-radius: 10px;
+  background: var(--coreui-alert-bg-color);
+  color: var(--coreui-alert-text-color);
   font-family: inherit;
   font-size: 1rem;
   grid-column: 2;
@@ -125,6 +134,10 @@ body.coreui_alert__show {
 .coreui_alert__container .coreui_alert__html {
   width: 100%;
   margin-top: 1em;
+}
+.coreui_alert__container .coreui_alert__html-expand {
+  border-bottom: 1px dotted #555;
+  cursor: pointer;
 }
 .coreui_alert__container .coreui_alert__animate {
   -webkit-animation-duration: 0.15s;

@@ -1218,7 +1218,7 @@
   };
 
   var tpl = Object.create(null);
-  tpl['container.html'] = ' <div class="coreui_alert__container"> <div class="coreui_alert__modal coreui_alert__type-<%= type %> coreui_alert__animate coreui_alert__animate_zoomIn"> <% if (showClose) { %> <button type="button" class="coreui_alert__close">×</button> <% } %> <% if (title) { %> <div class="coreui_alert__title"><%= title %></div> <% } %> <% if (message) { %> <div class="coreui_alert__message"><%= message %></div> <% } %> <% if (html) { %> <div class="coreui_alert__html"><%- html %></div> <% } %> <% if (buttons.length > 0) { %> <div class="coreui_alert__actions"> <% $.each(buttons, function(key, button) { %> <button type="button" class="btn btn-<%= button.type %> btn-<%= button.id %>"><%= button.text %></button> <% }); %> </div> <% } %> </div> </div>';
+  tpl['container.html'] = ' <div class="coreui_alert__container"> <div class="coreui_alert__modal coreui_alert__type-<%= type %> coreui_alert__animate coreui_alert__animate_zoomIn"> <% if (showClose) { %> <button type="button" class="coreui_alert__close">×</button> <% } %> <% if (title) { %> <div class="coreui_alert__title"><%= title %></div> <% } %> <% if (message) { %> <div class="coreui_alert__message"><%= message %></div> <% } %> <% if (html) { %> <% if (expandText) { %> <div class="coreui_alert__html-expand"><%= expandText %></div> <% } %> <div class="coreui_alert__html"<% if (expandText) { %> style="display:none"<% } %>><%- html %></div> <% } %> <% if (buttons.length > 0) { %> <div class="coreui_alert__actions"> <% $.each(buttons, function(key, button) { %> <button type="button" class="btn btn-<%= button.type %> btn-<%= button.id %>"><%= button.text %></button> <% }); %> </div> <% } %> </div> </div>';
 
   var coreuiAlertInstance = {
     _options: {
@@ -1249,34 +1249,38 @@
      * Открытие
      */
     show: function show() {
-      var that = this;
-      this._container = $(ejs.render(tpl['container.html'], {
-        type: that._options.type,
-        showClose: that._options.showClose,
-        title: that._options.title,
-        message: that._options.message,
-        html: that._options.html,
-        buttons: that._buttons
+      var alert = this;
+      var container = $(ejs.render(tpl['container.html'], {
+        type: alert._options.type,
+        showClose: alert._options.showClose,
+        title: alert._options.title,
+        message: alert._options.message,
+        expandText: alert._options.expandText,
+        html: alert._options.html,
+        buttons: alert._buttons
       }));
       var body = $('body');
-      body.append(this._container);
+      body.append(container);
       body.addClass('coreui_alert__show');
       if ($(window).height() < body.height()) {
         body.css('padding-right', coreuiAlertUtils.getScrollbarWidth());
       }
-      this._container.click(function (e) {
+      container.click(function (e) {
         if ($(e.target).hasClass('coreui_alert__container')) {
-          that.hide();
+          alert.hide();
         }
       });
-      $('.coreui_alert__close', this._container).click(function (e) {
-        that.hide();
+      $('.coreui_alert__close', container).click(function (e) {
+        alert.hide();
       });
-      if (Array.isArray(that._buttons) && that._buttons.length > 0) {
-        $.each(that._buttons, function (key, button) {
+      $('.coreui_alert__html-expand', container).click(function (e) {
+        $('.coreui_alert__html', container).toggle(100);
+      });
+      if (Array.isArray(alert._buttons) && alert._buttons.length > 0) {
+        $.each(alert._buttons, function (key, button) {
           if (typeof button.click === 'function') {
-            $('.btn-' + button.id, that._container).click(function () {
-              button.click.apply(that);
+            $('.btn-' + button.id, container).click(function () {
+              button.click.apply(alert);
             });
           }
         });
@@ -1284,6 +1288,7 @@
       if (typeof this._options.onShow === 'function') {
         this._options.onShow.apply(this);
       }
+      this._container = container;
     },
     /**
      * Закрытие
@@ -1400,6 +1405,7 @@
         type: 'default',
         title: null,
         message: null,
+        expandText: null,
         html: null,
         showClose: true,
         buttons: []

@@ -11,8 +11,12 @@
         <% if (message) { %>
         <div class="coreui_alert__message"><%= message %></div>
         <% } %>
+
         <% if (html) { %>
-        <div class="coreui_alert__html"><%- html %></div>
+            <% if (expandText) { %>
+                <div class="coreui_alert__html-expand"><%= expandText %></div>
+            <% } %>
+            <div class="coreui_alert__html"<% if (expandText) { %> style="display:none"<% } %>><%- html %></div>
         <% } %>
 
         <% if (buttons.length > 0) { %>

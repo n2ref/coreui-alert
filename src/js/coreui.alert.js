@@ -112,6 +112,7 @@ let coreuiAlert = {
             type: 'default',
             title: null,
             message: null,
+            expandText: null,
             html: null,
             showClose: true,
             buttons: []

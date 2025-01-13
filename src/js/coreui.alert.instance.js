@@ -44,22 +44,20 @@ let coreuiAlertInstance = {
      */
     show: function () {
 
-        let that = this;
-
-        this._container = $(
-            ejs.render(coreuiAlertTpl['container.html'], {
-                type: that._options.type,
-                showClose: that._options.showClose,
-                title: that._options.title,
-                message: that._options.message,
-                html: that._options.html,
-                buttons: that._buttons,
-            })
-        );
+        let alert     = this;
+        let container = $(ejs.render(coreuiAlertTpl['container.html'], {
+            type: alert._options.type,
+            showClose: alert._options.showClose,
+            title: alert._options.title,
+            message: alert._options.message,
+            expandText: alert._options.expandText,
+            html: alert._options.html,
+            buttons: alert._buttons,
+        }));
 
         let body = $('body');
 
-        body.append(this._container);
+        body.append(container);
         body.addClass('coreui_alert__show');
 
         if ($(window).height() < body.height()) {
@@ -67,20 +65,24 @@ let coreuiAlertInstance = {
         }
 
 
-        this._container.click(function (e) {
+        container.click(function (e) {
             if ($(e.target).hasClass('coreui_alert__container')) {
-                that.hide();
+                alert.hide();
             }
         });
-        $('.coreui_alert__close', this._container).click(function (e) {
-            that.hide();
+        $('.coreui_alert__close', container).click(function (e) {
+            alert.hide();
         });
 
-        if (Array.isArray(that._buttons) && that._buttons.length > 0) {
-            $.each(that._buttons, function (key, button) {
+        $('.coreui_alert__html-expand', container).click(function (e) {
+            $('.coreui_alert__html', container).toggle(100);
+        });
+
+        if (Array.isArray(alert._buttons) && alert._buttons.length > 0) {
+            $.each(alert._buttons, function (key, button) {
                 if (typeof button.click === 'function') {
-                    $('.btn-' + button.id, that._container).click(function () {
-                        button.click.apply(that);
+                    $('.btn-' + button.id, container).click(function () {
+                        button.click.apply(alert);
                     });
                 }
             });
@@ -89,6 +91,8 @@ let coreuiAlertInstance = {
         if (typeof this._options.onShow === 'function') {
             this._options.onShow.apply(this);
         }
+
+        this._container = container;
     },
 
 
